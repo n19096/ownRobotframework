@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "c5b7513c-40c4-4bef-89f6-51a9901a1c5d",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27516183"
+	},
+	"item": [
+		{
+			"name": "refresh_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "{{Referer}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/Account/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "municipality",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "{{Referer}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/User/municipalities",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"User",
+						"municipalities"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "projects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "{{Referer}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pageIndex\": 1,\r\n    \"pageSize\": 10,\r\n    \"projectFilters\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/Project/developer-projects",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Project",
+						"developer-projects"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{email}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if(pm.info.requestName===\"refresh_token\"){",
+					"const options = {",
+					"    url: \"https://testapi.civicserve.com/api/Account/login\",",
+					"    method: 'POST',",
+					"    header: { 'content-type': 'application/json', 'Referer': 'https://test.civicserve.com/' },",
+					"    body: {",
+					"        mode: 'raw',",
+					"        raw: JSON.stringify({ ",
+					"    \"email\": \"Rajesh.dev@mailinator.com\",",
+					"    \"password\": \"Q2l2aWNTZXJ2ZSMx\"",
+					"        })",
+					"",
+					"    }",
+					"};",
+					"",
+					"pm.sendRequest(options, function (err, res) {",
+					"    var jsonData = res.json();",
+					"    if (err) {",
+					"        console.log(err);",
+					"    }",
+					"    else {",
+					"        pm.environment.set(\"Response\", jsonData.ID);",
+					"    }",
+					"});}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var res = pm.response.json();",
+					"pm.collectionVariables.set('token', res.data.accessToken);"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "email",
+			"value": "Rajesh.dev@mailinator.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "Q2l2aWNTZXJ2ZSMx",
+			"type": "string"
+		},
+		{
+			"key": "URL",
+			"value": "https://testapi.civicserve.com/api",
+			"type": "string"
+		},
+		{
+			"key": "Referer",
+			"value": "https://test.civicserve.com/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

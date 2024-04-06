@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.4 on win32)" generated="2024-03-29T14:08:26.016156" rpa="false" schemaversion="5">
+<suite id="s1" name="Test 1" source="C:\Users\naresh.kummari\PycharmProjects\NareshFramework\tests\test_1.robot">
+<test id="s1-t1" name="Convert The date to epoch" line="15">
+<kw name="Convert Time" owner="DateTime">
+<msg time="2024-03-29T14:08:26.514787" level="INFO">${hours_minutes} = 00:04:00</msg>
+<var>${hours_minutes}</var>
+<arg>${240}</arg>
+<arg>timer</arg>
+<arg>exclude_millis=true</arg>
+<doc>Converts between supported `time formats`.</doc>
+<status status="PASS" start="2024-03-29T14:08:26.514787" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${hours_minutes}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-03-29T14:08:26.515802" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-29T14:08:26.512779" elapsed="0.004017"/>
+</test>
+<status status="PASS" start="2024-03-29T14:08:26.018294" elapsed="0.499404"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test 1">Test 1</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-03-29T14:08:26.506201" level="ERROR">Error in file 'C:\Users\naresh.kummari\PycharmProjects\NareshFramework\common_src\common_methods.robot' on line 7: Importing library 'RPA.SAP' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\naresh.kummari\PycharmProjects\NareshFramework\venv\Scripts\robot.exe
+  C:\Users\naresh.kummari\AppData\Local\Programs\Python\Python311\python311.zip
+  C:\Users\naresh.kummari\AppData\Local\Programs\Python\Python311\DLLs
+  C:\Users\naresh.kummari\AppData\Local\Programs\Python\Python311\Lib
+  C:\Users\naresh.kummari\AppData\Local\Programs\Python\Python311
+  C:\Users\naresh.kummari\PycharmProjects\NareshFramework\venv
+  C:\Users\naresh.kummari\PycharmProjects\NareshFramework\venv\Lib\site-packages</msg>
+</errors>
+</robot>

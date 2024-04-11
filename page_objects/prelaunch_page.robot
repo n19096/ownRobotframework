@@ -15,7 +15,6 @@ ${page_title}   AgileOne
 *** Keywords ***
 unlockapplication
 
-    Page title verification     ${page_title}
     Find And Click Element    ${Unlock_element}
     Clear And Type Into Element    ${prelaunch_field}    platform
     Find And Click Element    ${continue_button}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240410 21:30:28.761" rpa="false" schemaversion="4">
+<suite id="s1" name="Test 1" source="c:\Users\naresh.kummari\PycharmProjects\NareshFramework\tests\test_1.robot">
+<kw name="browser setup" library="browser_setup" type="SETUP">
+<kw name="launch browser" library="browser_setup">
+<arg>${browser}</arg>
+<arg>${url}</arg>
+<kw name="Convert To Lower Case" library="String">
+<var>${actual_browser}</var>
+<arg>${browser}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240410 21:30:30.147" level="INFO">${actual_browser} = chrome</msg>
+<status status="PASS" starttime="20240410 21:30:30.145" endtime="20240410 21:30:30.152"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>1s</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>browser=${actual_browser}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>browser=${actual_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240410 21:30:30.163" level="INFO">Opening browser 'chrome' to base url 'https://qa-app.agile-one.com/prelaunch'.</msg>
+<status status="PASS" starttime="20240410 21:30:30.158" endtime="20240410 21:30:35.196"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:30.152" endtime="20240410 21:30:35.196"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240410 21:30:35.196" endtime="20240410 21:30:35.332"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:30.129" endtime="20240410 21:30:35.332"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:30.129" endtime="20240410 21:30:35.332"/>
+</kw>
+<test id="s1-t1" name="test" line="11">
+<kw name="Login to application as platform user" library="login_page">
+<kw name="unlockapplication" library="prelaunch_page">
+<kw name="Find And Click Element" library="common_methods">
+<arg>${Unlock_element}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240410 21:30:35.345" endtime="20240410 21:30:35.392"/>
+</kw>
+<kw name="Verify Element On Page" library="common_methods">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${half_timeout}</var>
+<arg>${timeout}/2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240410 21:30:35.400" level="INFO">${half_timeout} = 30.0</msg>
+<status status="PASS" starttime="20240410 21:30:35.392" endtime="20240410 21:30:35.400"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>2x</arg>
+<arg>2s</arg>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>${half_timeout}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${half_timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20240410 21:30:35.400" endtime="20240410 21:30:35.416"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.400" endtime="20240410 21:30:35.416"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240410 21:30:35.416" endtime="20240410 21:30:35.444"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240410 21:30:35.478" level="INFO">Element 'xpath=//p[contains(text(),'Unlock')]' is displayed.</msg>
+<status status="PASS" starttime="20240410 21:30:35.444" endtime="20240410 21:30:35.478"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.392" endtime="20240410 21:30:35.478"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>2x</arg>
+<arg>1s</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240410 21:30:35.478" level="INFO">Clicking element 'xpath=//p[contains(text(),'Unlock')]'.</msg>
+<status status="PASS" starttime="20240410 21:30:35.478" endtime="20240410 21:30:35.619"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.478" endtime="20240410 21:30:35.619"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.345" endtime="20240410 21:30:35.619"/>
+</kw>
+<kw name="Clear And Type Into Element" library="common_methods">
+<arg>${prelaunch_field}</arg>
+<arg>platform</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${field_location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240410 21:30:35.619" endtime="20240410 21:30:35.643"/>
+</kw>
+<kw name="Verify Element On Page" library="common_methods">
+<arg>${field_location}</arg>
+<arg>${timeout}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${half_timeout}</var>
+<arg>${timeout}/2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240410 21:30:35.651" level="INFO">${half_timeout} = 30.0</msg>
+<status status="PASS" starttime="20240410 21:30:35.651" endtime="20240410 21:30:35.651"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>2x</arg>
+<arg>2s</arg>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>${half_timeout}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${half_timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20240410 21:30:35.658" endtime="20240410 21:30:35.681"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.657" endtime="20240410 21:30:35.681"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240410 21:30:35.681" endtime="20240410 21:30:35.724"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240410 21:30:35.741" level="INFO">Element 'xpath=//input[@name='prelaunchPassword']' is displayed.</msg>
+<status status="PASS" starttime="20240410 21:30:35.724" endtime="20240410 21:30:35.754"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.643" endtime="20240410 21:30:35.754"/>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<arg>${field_location}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" starttime="20240410 21:30:35.754" endtime="20240410 21:30:35.801"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${field_location}</arg>
+<arg>${text_entry}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240410 21:30:35.807" level="INFO">Typing text 'platform' into text field 'xpath=//input[@name='prelaunchPassword']'.</msg>
+<status status="PASS" starttime="20240410 21:30:35.801" endtime="20240410 21:30:35.888"/>
+</kw>
+<status status="PASS" starttime="20240410 21:30:35.619" endtime="20240410 21:30:35.891"/>
+</kw>
+<kw name="Find And Click Element" library="common_methods">
+<arg>${continue_button}

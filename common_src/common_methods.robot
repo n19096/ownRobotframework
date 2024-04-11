@@ -1,10 +1,8 @@
-*** Settings ***
+***settings***
 Resource    ../resourece/contraints.robot
 Resource    ../global_common_src/library_setup.robot
 Resource    ../global_common_src/timeout_setup.robot
 
-
-Library    RPA.SAP
 
 *** Keywords ***
 Verify Element On Page
@@ -45,9 +43,20 @@ Page title verification
 
     Set Selenium Implicit Wait     10
     ${get_title}    Get Title
-    Log To Console    ${get_title}
     Run Keyword If    '${get_title}' == '${titles}'
     ...    Log    page opened successfully
+
+Success toast message verification
+    [Arguments]
+    ...    ${toast}
+    Wait Until Keyword Succeeds    3x    1s
+    ...    Wait Until Element Is Visible    ${toast}
+
+Element visibility verification
+    [Arguments]
+    ...    ${visibleElement}
+    Wait Until Keyword Succeeds    3x    1s
+    ...    Element Should Not Be Visible    ${visibleElement}
 
 
 Convert sec to min
